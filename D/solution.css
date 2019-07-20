@@ -1,0 +1,38 @@
+:root {
+    --zoom: 1;
+}
+
+div {
+    width: calc(var(--zoom) * 50px);
+    height: calc(var(--zoom) * 50px);
+    background: #e5e5e5;
+    border-radius: calc(var(--zoom) * 11px);
+    overflow: hidden;
+    position: relative;
+}
+
+div::before {
+    position: absolute;
+    content: "";
+    left: 0;
+    top: calc(var(--zoom) * -1px);
+    width: calc(var(--zoom) * 38px);
+    height: calc(var(--zoom) * 54px);
+    background: #2832f5;
+    border-top-right-radius: 24%;
+    border-bottom-right-radius: 67%;
+}
+
+div::after {
+    position: absolute;
+    content: "";
+    top: calc(var(--zoom) * 5px);
+    left: calc(var(--zoom) * -13px);
+    width: calc(var(--zoom) * 36px);
+    height: calc(var(--zoom) * 39px);
+    background: #1f1f1f;
+    border-radius: calc(var(--zoom) * 18px) calc(var(--zoom) * 18px) calc(var(--zoom) * 18px) calc(var(--zoom) * 18px)
+        / calc(var(--zoom) * 8px) calc(var(--zoom) * 11px) calc(var(--zoom) * 23px) calc(var(--zoom) * 30px);
+    border-right: calc(var(--zoom) * 1px) solid #ffa308;
+    box-sizing: border-box;
+}
