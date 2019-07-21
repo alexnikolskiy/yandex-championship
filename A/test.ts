@@ -1,7 +1,8 @@
 const assert = require('assert').strict;
 const hash = require('./index');
+import { GeoObject, Geobase } from './index';
 
-const regions = [
+const regions: GeoObject[] = [
     {
         id: 9527, name: 'Россия',
         children: [
@@ -17,7 +18,7 @@ const regions = [
         ]
     }
 ];
-const record = {
+const record: Geobase = {
     '9527': { name: 'Россия', children: [95134, 78274] },
     '9529': { name: 'Владивосток', parent: 95134 },
     '78274': { name: 'Москва', parent: 9527 },

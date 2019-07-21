@@ -1,9 +1,9 @@
 type GeoId = number;
 
-interface GeoObject {
+export interface GeoObject {
     id: number;
     name: string;
-    children?: GeoObject[]
+    children?: GeoObject[];
 }
 
 type Regions = GeoObject[];
@@ -14,34 +14,32 @@ interface GeoRecord {
     children?: GeoId[];
 }
 
-interface Geobase {
+export interface Geobase {
     [key: number]: GeoRecord;
 }
 
 module.exports = function (regions: Regions) {
     const geoObjectStack: GeoObject[] = [];
-    const parents: Map<GeoObject, number> = new Map();
+    const parents: Map<GeoObject, GeoId> = new Map();
     const result: Geobase = {};
 
     for (let region of regions) {
         geoObjectStack.push(region);
 
         while (geoObjectStack.length) {
-            const geoObject = geoObjectStack.pop();
-            // const record = result[geoObject.id] = { name: geoObject.name };
+            const geoObject: GeoObject = geoObjectStack.pop() as GeoObject;
             const record: GeoRecord = { name: geoObject.name };
-
-            // record.name = geoObject.name;
 
             if (parents.has(geoObject)) {
                 record.parent = parents.get(geoObject);
             }
 
             if (geoObject.children) {
-                record.children = geoObject.children.map(item => item.id);
+                record.children = [];
 
                 for (let child of geoObject.children) {
                     geoObjectStack.push(child);
+                    record.children.push(child.id);
                     parents.set(child, geoObject.id);
                 }
             }
