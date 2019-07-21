@@ -1,8 +1,9 @@
 const assert = require('assert').strict;
 const search = require('./index');
+import { FetchFlights, Route } from './index';
 
-const fetchFlights = (node) => {
-    let result;
+const fetchFlights: FetchFlights = (node) => {
+    let result: string[];
 
     switch (node) {
         case 'A':
@@ -27,8 +28,14 @@ const fetchFlights = (node) => {
     return Promise.resolve(result);
 };
 
-console.time('test');
-search("A", "F", fetchFlights).then(res => {
-    assert.deepEqual(['A', 'C', 'F'], res);
-    console.log('OK!')
-});
+(async () => {
+    let route: Route;
+
+    route = await search('A', 'F', fetchFlights);
+    assert.deepEqual(['A', 'C', 'F'], route);
+
+    route = await search('A', 'X', fetchFlights);
+    assert.equal('no way', route);
+
+    console.log('OK!');
+})();
