@@ -1,32 +1,17 @@
-/**
- * @typedef Data
- * @type {Number}
- */
+type Data = number;
 
-class BinaryTreeNode {
-    /**
-     * @param {Data} data
-     */
-    constructor(data) {
-        /**
-         * @type {Data}
-         */
+export default class BinaryTreeNode {
+    public data: Data;
+    public left: BinaryTreeNode | null;
+    public right: BinaryTreeNode | null;
+
+    constructor(data: Data) {
         this.data = data;
-        /**
-         * @type {BinaryTreeNode | null}
-         */
         this.left = null;
-        /**
-         * @type {BinaryTreeNode | null}
-         */
         this.right = null;
     }
 
-    /**
-     * @param {Data} data
-     * @returns {BinaryTreeNode}
-     */
-    insert(data) {
+    insert(data: Data): this {
         if (data < this.data) {
             if (this.left === null) {
                 this.left = new BinaryTreeNode(data);
@@ -44,7 +29,7 @@ class BinaryTreeNode {
         return this;
     }
 
-    toString() {
+    toString(): string {
         if (this.data === undefined || this.data === null) {
             return '<null>';
         }
@@ -53,34 +38,18 @@ class BinaryTreeNode {
     }
 }
 
-/**
- *
- * @param {BinaryTreeNode} root
- * @returns {String}
- */
-function printTree(root) {
-    /**
-     * @type {(String | null)[][]}
-     */
-    const lines = [];
+type Line = string | null;
+type Node = BinaryTreeNode | null;
 
-    /**
-     * @type {(BinaryTreeNode | null)[]}
-     */
-    let level = [root];
-
-    let counter = 1;
-    let widest = 0;
+function printTree(root: BinaryTreeNode): string {
+    const lines: Line[][] = [];
+    let level: Node[] = [root];
+    let counter: number = 1;
+    let widest: number = 0;
 
     while (counter !== 0) {
-        /**
-         * @type {(String | null)[]}
-         */
-        const line = [];
-        /**
-         * @type {(BinaryTreeNode | null)[]}
-         */
-        const next = [];
+        const line: Line[] = [];
+        const next: Node[] = [];
 
         counter = 0;
 
@@ -114,14 +83,14 @@ function printTree(root) {
         level = next;
     }
 
-    return lines.reduce((output, line, i) => {
-        const nodeWidth = lines[lines.length - 1].length * (widest + 4) / Math.pow(2, i);
+    return lines.reduce((output: string, line: Line[], i: number) => {
+        const nodeWidth: number = lines[lines.length - 1].length * (widest + 4) / Math.pow(2, i);
 
         if (i !== 0) {
             // Добавляет границу в виде ASCII.
-            output += line.reduce((result, data, j) => {
+            output += line.reduce((result: string, data: Line, j: number) => {
                 // Разделяет текущую ноду.
-                let cornerChar = ' ';
+                let cornerChar: string = ' ';
                 if (j % 2 === 1) {
                     if (line[j - 1] !== null) {
                         // cornerChar = data !== null ? '┴' : '┘';
@@ -137,10 +106,10 @@ function printTree(root) {
                 if (data === null) {
                     result += ' '.repeat(nodeWidth - 1);
                 } else {
-                    const middle = nodeWidth / 2 - 1;
+                    const middle: number = nodeWidth / 2 - 1;
 
                     // const leftChar = j % 2 === 0 ? ' ' : '─';
-                    const leftChar = j % 2 === 0 ? ' ' : '0';
+                    const leftChar: string = j % 2 === 0 ? ' ' : '0';
                     result += leftChar.repeat(Math.ceil(middle));
 
                     // result += j % 2 === 0 ? '┌' : '┐';
@@ -148,7 +117,7 @@ function printTree(root) {
 
                     if (j !== line.length - 1) {
                         // const rightChar = j % 2 === 0 ? '─' : ' ';
-                        const rightChar = j % 2 === 0 ? '0' : ' ';
+                        const rightChar: string = j % 2 === 0 ? '0' : ' ';
                         result += rightChar.repeat(Math.floor(middle));
                     }
                 }
@@ -158,9 +127,9 @@ function printTree(root) {
         }
 
         // Добавляет строки с данным нод.
-        return output + line.reduce((result, data, j) => {
+        return output + line.reduce((result: string, data: Line, j: number) => {
             data = data || '';
-            const middle = nodeWidth / 2 - data.length / 2;
+            const middle: number = nodeWidth / 2 - data.length / 2;
 
             result += ' '.repeat(Math.ceil(middle));
 
@@ -177,3 +146,4 @@ function printTree(root) {
 }
 
 module.exports = printTree;
+module.exports.default = BinaryTreeNode;
