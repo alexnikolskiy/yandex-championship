@@ -1,15 +1,10 @@
 type Data = number;
 
 export default class BinaryTreeNode {
-    public data: Data;
-    public left: BinaryTreeNode | null;
-    public right: BinaryTreeNode | null;
+    public left: BinaryTreeNode | null = null;
+    public right: BinaryTreeNode | null = null;
 
-    constructor(data: Data) {
-        this.data = data;
-        this.left = null;
-        this.right = null;
-    }
+    constructor(public data: Data) {}
 
     insert(data: Data): this {
         if (data < this.data) {
