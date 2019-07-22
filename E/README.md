@@ -4,11 +4,11 @@
 
 Желаемое состояние (1366px):
 
-[pic]: https://contest.yandex.ru/testsys/statement-image?imageId=a936571b6aa61433ab186c4654fb3303106114f1210f38fcebc929fb98e6048e
+![pic](https://contest.yandex.ru/testsys/statement-image?imageId=a936571b6aa61433ab186c4654fb3303106114f1210f38fcebc929fb98e6048e)
 
 Желаемое состояние (800px):
 
-[pic]: https://contest.yandex.ru/testsys/statement-image?imageId=4ab5b25bf3f925d02fa275f106e7021114a13327afd60b2f9052eb334799c47c
+![pic](https://contest.yandex.ru/testsys/statement-image?imageId=4ab5b25bf3f925d02fa275f106e7021114a13327afd60b2f9052eb334799c47c)
 
 Необходимо привести внешний вид в соответствии с первоначальным дизайном с наименьшим количеством изменений в текущем CSS-файле.
 
