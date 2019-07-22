@@ -1,8 +1,9 @@
 const assert = require('assert').strict;
 const getCheapestTickets = require('./index');
+import { Ticket } from './index';
 
-let days = [1, 2, 4, 6, 7, 8, 9, 10, 20];
-let tickets = [
+let days: number[] = [1, 2, 4, 6, 7, 8, 9, 10, 20];
+let tickets: Ticket[] = [
     { cost: 3, duration: 1 },
     { cost: 10, duration: 7 },
     { cost: 20, duration: 30 }
