@@ -27,7 +27,7 @@ module.exports = function (start, end, fetchFlights) {
 
 ### Формат ввода
 
-[pic]: https://contest.yandex.ru/testsys/statement-image?imageId=c29e638288cc7a208e6f21611cee10039d83e8807b75a30975fa147475cc278b
+![pic](https://contest.yandex.ru/testsys/statement-image?imageId=c29e638288cc7a208e6f21611cee10039d83e8807b75a30975fa147475cc278b)
 
 Необходимо построить маршрут из пункта A в пункт D.
 
