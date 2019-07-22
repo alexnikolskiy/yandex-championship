@@ -4,7 +4,8 @@
   "description": "В этом репозитории представлены мои решения задач квалификационного раунда чемпионата по программированию от Яндекса по фронтенд разработке.",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "npx tsc -p tsconfig.json",
+    "test": "npx ts-node --project tsconfig.json"
   },
   "keywords": [],
   "author": "",
